@@ -14,6 +14,9 @@
   "description": "",
   "dependencies": {
     "express": "^4.17.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "terser-webpack-plugin": "^3.0.1",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"
   },
