@@ -11,7 +11,7 @@
 
         <header>
             <div class="">
-                Logo
+                
             </div>
             <div class="">
                 navigation
@@ -22,18 +22,19 @@
             <section>
                 <form class="" onsubmit="return handleSubmit(event)">
                     <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)"   onsubmit="return handleSubmit(event)" method="GET" action="/api">
+                    
                 </form>
             <section>
-
+                
             <section>
-                <strong>Form Results:</strong>
+                <strong>Result:</strong>  
                 <div id="results"></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>This is afooter</p>
         </footer>
 
     </body>
