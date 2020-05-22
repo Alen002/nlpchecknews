@@ -7,6 +7,7 @@ const mockAPIResponse = require('./mockAPI.js')
 const morgan = require('morgan');
 const aylienTextAPI = require('aylien_textapi')
 const bodyParser = require('body-parser');
+/* const cors = require('cors'); */
 
 
 // Initialize the Aylien API and make a request
@@ -15,7 +16,10 @@ var textapi = new aylienTextAPI({
     application_key: process.env.api_key // keys are from the .env file
   });
 
-const app = express()
+const app = express();
+app.use(express.json());
+/* app.use(cors()); */
+
 app.use(morgan('short'));  // short or combines can be used as attributes
 app.use(express.static('dist'));
 
@@ -29,16 +33,17 @@ app.get('/', (req, res) => {
     res.sendFile('dist/index.html')
 });
 
-app.get('/api', (req, res) => {
-    textapi.sentiment({
-        'text': 'Today is a great day'   // text from the user entered in the form of index.html
-      }, function(error, response) {
-        if (error === null) {
-          res.send(response);
-        } else console.log('API not working');
-    });
-})
-
+app.post('/api', (req, res) => {
+  
+  textapi.sentiment(
+    req.body, 
+    function(error, response) {
+    if (error === null) {
+      res.send(response);
+      console.log(response);
+    }
+  });
+});
 
 
 /* app.get('/', function (req, res) {
